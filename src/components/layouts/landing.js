@@ -1,15 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class Landing extends Component {
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/Courses");
+    }
+  }
   render() {
     return (
       <div className="landing">
-        <div className="dark-overlay landing-inner text-light">
+        <div className="landing-inner text-light">
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">DSWA Courses</h1>
+                <h1 className="display-3 mb-4">
+                  Data Science With Ali Courses
+                </h1>
                 <p className="lead">
                   {" "}
                   Courses, share posts and get help from other developers
@@ -30,4 +39,12 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+Landing.propTypes = {
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(Landing);
