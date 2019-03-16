@@ -7,7 +7,18 @@ import { GET_ERRORS, SET_CURRENT_USER } from "./types";
 export const registeruser = (userData, history) => dispatch => {
   axios
     .post("/api/dswa/signup", userData)
-    .then(res => history.push("/login"))
+    .then(res => {
+      // save to localstorage
+      const token = res.data;
+      // set token to ls
+      localStorage.setItem("jwtToken", token);
+      // set token to Auth header
+      setAuthToken(token);
+      // Decode token to get user data
+      const decoded = jwt_decode(token);
+      // set current user
+      dispatch(setCurrentUser(decoded));
+    })
     .catch(err =>
       dispatch({
         type: GET_ERRORS,
@@ -22,7 +33,7 @@ export const loginUser = userData => dispatch => {
     .then(res => {
       // save to localstorage
       const token = res.data;
-      console.log(token);
+
       // set token to ls
       localStorage.setItem("jwtToken", token);
       // set token to Auth header

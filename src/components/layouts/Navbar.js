@@ -11,12 +11,12 @@ class Navbar extends Component {
   }
 
   render() {
-    const { isAuthenticated, user } = this.props.auth;
+    const { isAuthenticated } = this.props.auth;
     const authLinks = (
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <a
-            href="#"
+            href=""
             onClick={this.onLogoutClick.bind(this)}
             className="nav-link"
           >
@@ -56,15 +56,27 @@ class Navbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="mobile-nav">
-            <ul className="navbar-nav mr-auto">
+            <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/Courses">
                   {" "}
-                  Courses
+                  Browse Courses
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/Courses">
+                  {" "}
+                  Membership
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/Courses">
+                  {" "}
+                  About Us
+                </Link>
+              </li>
+              {isAuthenticated ? authLinks : guestLinks}
             </ul>
-            {isAuthenticated ? authLinks : guestLinks}
           </div>
         </div>
       </nav>
