@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authActions";
+import { setCurrentUserLogin, logoutUser } from "./actions/authActions";
 
 import Navbar from "./components/layouts/Navbar";
 import Landing from "./components/layouts/landing";
@@ -11,6 +11,8 @@ import Footer from "./components/layouts/footer";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
 import store from "./store";
+import Dashboard from "./components/dashboard/Dashboard";
+import { clearCurrentProfile } from "./actions/profileActions";
 
 import "./App.css";
 
@@ -19,15 +21,16 @@ if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
   // Decode token and get user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
+  const payloads = localStorage.payload;
   // Set user and isAuthenticated
-  store.dispatch(setCurrentUser(decoded));
-
+  store.dispatch(setCurrentUserLogin(decoded, payloads));
   // check for expired token
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     // Logout user
     store.dispatch(logoutUser());
     // TODO: Clear current profile
+    store.dispatch(clearCurrentProfile());
 
     // Redirect to login
     window.location.href = "/login";
@@ -45,6 +48,7 @@ class App extends Component {
             <div className="container">
               <Route exact path="/login" component={Login} />
               <Route exact path="/register" component={Register} />
+              <Route exact path="/dashboard" component={Dashboard} />
             </div>
             <Footer />
           </div>

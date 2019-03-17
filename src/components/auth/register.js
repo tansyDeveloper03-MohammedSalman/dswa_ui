@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import classnames from "classnames";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registeruser } from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Register extends Component {
   constructor() {
@@ -29,7 +29,7 @@ class Register extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.auth.isAuthenticated) {
-      this.props.history.push("/Courses");
+      this.props.history.push("/dashboard");
     }
 
     if (nextProps.errors) {
@@ -64,90 +64,54 @@ class Register extends Component {
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">Create your DSWA account</p>
               <form noValidate onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.first_name
-                    })}
-                    placeholder="First Name"
-                    name="first_name"
-                    value={this.state.first_name}
-                    onChange={this.onChange}
-                  />
-                  {errors.first_name && (
-                    <div className="invalid-feedback">{errors.first_name}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.last_name
-                    })}
-                    placeholder="Last Name"
-                    name="last_name"
-                    value={this.state.name}
-                    onChange={this.onChange}
-                  />
-                </div>
-                <div className="form-group">
-                  <input
-                    type="email"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.email
-                    })}
-                    placeholder="Email Address"
-                    name="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                  />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.email}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="password"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.password
-                    })}
-                    placeholder="Password"
-                    name="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                  />
-                  {errors.email && (
-                    <div className="invalid-feedback">{errors.password}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.country
-                    })}
-                    placeholder="country"
-                    name="country"
-                    value={this.state.country}
-                    onChange={this.onChange}
-                  />
-                  {errors.country && (
-                    <div className="invalid-feedback">{errors.country}</div>
-                  )}
-                </div>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className={classnames("form-control form-control-lg", {
-                      "is-invalid": errors.city
-                    })}
-                    placeholder="city"
-                    name="city"
-                    value={this.state.city}
-                    onChange={this.onChange}
-                  />
-                </div>
+                <TextFieldGroup
+                  placeholder="First Name"
+                  name="first_name"
+                  type="text"
+                  value={this.state.first_name}
+                  onChange={this.onChange}
+                  error={errors.first_name}
+                />
+                <TextFieldGroup
+                  placeholder="Last Name"
+                  name="last_name"
+                  type="text"
+                  value={this.state.last_name}
+                  onChange={this.onChange}
+                  error={errors.last_name}
+                />
+                <TextFieldGroup
+                  placeholder="Email Address"
+                  name="email"
+                  type="email"
+                  value={this.state.email}
+                  onChange={this.onChange}
+                  error={errors.email}
+                />
+                <TextFieldGroup
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.onChange}
+                  error={errors.password}
+                />
+                <TextFieldGroup
+                  placeholder="Country"
+                  name="country"
+                  type="text"
+                  value={this.state.country}
+                  onChange={this.onChange}
+                  error={errors.country}
+                />
+                <TextFieldGroup
+                  placeholder="City"
+                  name="city"
+                  type="text"
+                  value={this.state.city}
+                  onChange={this.onChange}
+                  error={errors.city}
+                />
                 <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
