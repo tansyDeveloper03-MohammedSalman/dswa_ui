@@ -9,11 +9,10 @@ class Dashboard extends Component {
   componentDidMount() {
     this.props.getCurrentProfie();
   }
-
   render() {
-    const { user, userName } = this.props.auth;
+    const { userName } = this.props.auth;
     const { profile, loading } = this.props.profile;
-
+    console.log(this.props);
     let dashboardContent;
     if (profile === null || loading) {
       dashboardContent = <Spinner />;
