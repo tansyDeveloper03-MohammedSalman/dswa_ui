@@ -12,6 +12,27 @@ class Landing extends Component {
   render() {
     return (
       <div className="landing">
+        <div className="row col-md-12" style={{ marginTop: "25px" }}>
+          <div className="col-md-10">
+            <h1 className="display-5 text-light">Data Science With Ali</h1>
+          </div>
+          <div className="col-md-2" style={{ paddingTop: "10px" }}>
+            <Link
+              className="text-light"
+              to="/register"
+              style={{ fontSize: "20px", marginRight: "25px" }}
+            >
+              Sign Up
+            </Link>
+            <Link
+              className="text-light"
+              to="/login"
+              style={{ fontSize: "20px" }}
+            >
+              Login
+            </Link>
+          </div>
+        </div>
         <div className="landing-inner text-light">
           <div className="container">
             <div className="row">

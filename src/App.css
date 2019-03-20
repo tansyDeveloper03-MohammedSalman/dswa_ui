@@ -3,19 +3,38 @@ img {
 }
 
 .landing {
-  position: relative;
+  position: fixed;
   background: url("./img/showcase.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
-  margin-top: -24px;
-  margin-bottom: -50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  z-index: 2;
+  text-align: Left;
+  min-width: 100%;
+  min-height: 100%;
+}
+.landings {
+  text-align: left;
 }
 
 .landing-inner {
-  padding-top: 80px;
+  padding-top: 150px;
 }
 
+.home-banner-cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  text-align: center;
+  background-size: cover !important;
+  min-width: 100%;
+  min-height: 100%;
+}
 .dark-overlay {
   background-color: rgba(0, 0, 0, 0.7);
   position: absolute;
@@ -36,4 +55,17 @@ img {
 
 .form-control::placeholder {
   color: #bbb !important;
+}
+/* register */
+.bodyCenter {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 90%;
+  text-align: center;
+  margin: 30px 350px;
+}
+
+.NoPaddingAndMargin {
+  padding: 0px;
+  margin-top: 0px;
+  color: white;
 }

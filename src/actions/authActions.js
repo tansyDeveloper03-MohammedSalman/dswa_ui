@@ -58,6 +58,19 @@ export const loginUser = userData => dispatch => {
     );
 };
 
+export const changePassowrd = (userData, history) => dispatch => {
+  console.log(history);
+  axios
+    .post("/api/dswa/changepassword", userData)
+    .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // set logged in user
 export const setCurrentUser = decoded => {
   return {

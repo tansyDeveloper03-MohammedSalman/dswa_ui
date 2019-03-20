@@ -17,6 +17,7 @@ import store from "./store";
 import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
 import EditProfile from "./components/edit-profile/EditProfile";
+import ChangePassword from "./components/change_password/ChangePassword";
 
 import "./App.css";
 
@@ -24,8 +25,8 @@ if (localStorage.jwtToken) {
   // Set auth token header auth
   setAuthToken(localStorage.jwtToken);
   // Decode token and get user info and exp
-  const decoded = jwt_decode(localStorage.jwtToken);
   const payloads = localStorage.payload;
+  const decoded = jwt_decode(localStorage.jwtToken);
   // Set user and isAuthenticated
   store.dispatch(setCurrentUserLogin(decoded, payloads));
   // check for expired token
@@ -47,11 +48,14 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Navbar />
+            {/* <Navbar /> */}
+
             <Route exact path="/" component={Landing} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
+            <Navbar />
+
             <div className="container">
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/register" component={Register} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>
@@ -67,6 +71,16 @@ class App extends Component {
                   exact
                   path="/edit-profile"
                   component={EditProfile}
+                />
+              </Switch>
+              <Switch>
+                <PrivateRoute exact path="/Courses" component={EditProfile} />
+              </Switch>
+              <Switch>
+                <PrivateRoute
+                  exact
+                  path="/change-password"
+                  component={ChangePassword}
                 />
               </Switch>
             </div>
