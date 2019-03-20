@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { registeruser } from "../../actions/authActions";
-import TextFieldGroup from "../common/TextFieldGroup";
 import "../../App.css";
 
 class Register extends Component {
@@ -60,66 +59,59 @@ class Register extends Component {
     const errors = this.state.errors;
     return (
       <div className="landing">
-        <div className="register bodyCenter">
+        <div className="register bodyCenterregister">
           <div className="container NoPaddingAndMargin">
             <div className="row NoPaddingAndMargin">
               <div className="col-md-10 m-auto NoPaddingAndMargin">
-                <h3 className="display-6 text-center mt-3">Sign Up</h3>
-                <p className="lead text-center">Create your DSWA account</p>
-                <form noValidate onSubmit={this.onSubmit}>
-                  <TextFieldGroup
-                    placeholder="First Name"
-                    name="first_name"
-                    type="text"
-                    value={this.state.first_name}
-                    onChange={this.onChange}
-                    error={errors.first_name}
-                  />
-                  <TextFieldGroup
-                    placeholder="Last Name"
-                    name="last_name"
-                    type="text"
-                    value={this.state.last_name}
-                    onChange={this.onChange}
-                    error={errors.last_name}
-                  />
-                  <TextFieldGroup
-                    placeholder="Email Address"
-                    name="email"
-                    type="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    error={errors.email}
-                  />
-                  <TextFieldGroup
-                    placeholder="Password"
-                    name="password"
-                    type="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                    error={errors.password}
-                  />
-                  <TextFieldGroup
-                    placeholder="Country"
-                    name="country"
-                    type="text"
-                    value={this.state.country}
-                    onChange={this.onChange}
-                    error={errors.country}
-                  />
-                  <TextFieldGroup
-                    placeholder="City"
-                    name="city"
-                    type="text"
-                    value={this.state.city}
-                    onChange={this.onChange}
-                    error={errors.city}
-                  />
-                  <input
-                    type="submit"
-                    className="btn btn-info btn-block mt-2"
-                  />
-                </form>
+                <div className="mt-5">
+                  <p className="lead text-center">
+                    Create And Personalize Your DSWA Profile
+                  </p>
+                </div>
+                <div
+                  className="btn-group col-md-10 mt-3"
+                  role="group"
+                  style={{
+                    color: "#003366",
+                    width: "100%"
+                  }}
+                >
+                  <Link
+                    to="/registerWithEmail"
+                    className="btn"
+                    style={{
+                      backgroundColor: "#22aae4",
+                      color: "white"
+                    }}
+                  >
+                    Sign Up With Email
+                  </Link>
+                </div>
+                <div className="mt-3">
+                  <p>or</p>
+                </div>
+                <div
+                  className="btn-group col-md-10"
+                  role="group"
+                  style={{
+                    color: "#003366",
+                    width: "100%"
+                  }}
+                >
+                  <Link
+                    to="/linkedin"
+                    className="btn"
+                    style={{
+                      backgroundColor: "#3078D7",
+                      color: "white"
+                    }}
+                  >
+                    <div style={{ float: "left" }}>
+                      <i className="fab fa-linkedin-in mr-1" /> |{" "}
+                    </div>
+                    Sign Up with LinkedIn
+                  </Link>
+                </div>
                 <p className="mt-2 text-right">
                   Already have an account? -
                   <Link

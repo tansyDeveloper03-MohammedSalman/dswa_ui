@@ -64,6 +64,60 @@ class Navbar extends Component {
       </ul>
     );
 
+    const authLinksSideBar = (
+      <div style={{ marginTop: "0px" }}>
+        <Link
+          to="/dashBoard"
+          // onClick={this.toggleMenu}
+          onClick={this.onLogoutClick.bind(this)}
+          className="btn btn-light col-md-12"
+          style={{
+            marginTop: "10px",
+            color: "white",
+            border: "1px solid #343a40",
+            backgroundColor: "#343a40",
+            textAlign: "left"
+          }}
+        >
+          Logout
+        </Link>
+      </div>
+    );
+
+    const guestLinksSideBar = (
+      <div>
+        <div style={{ marginTop: "0px" }}>
+          <Link
+            to="/register"
+            className="btn btn-light col-md-12"
+            style={{
+              marginTop: "10px",
+              color: "white",
+              border: "1px solid #343a40",
+              backgroundColor: "#343a40",
+              textAlign: "left"
+            }}
+          >
+            Sign Up
+          </Link>
+        </div>
+        <div style={{ marginTop: "0px" }}>
+          <Link
+            to="/login"
+            className="btn btn-light col-md-12"
+            style={{
+              marginTop: "10px",
+              color: "white",
+              border: "1px solid #343a40",
+              backgroundColor: "#343a40",
+              textAlign: "left"
+            }}
+          >
+            Login
+          </Link>
+        </div>
+      </div>
+    );
     return (
       <div>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-0">
@@ -179,23 +233,7 @@ class Navbar extends Component {
                   DashBoard
                 </Link>
               </div>
-              <div style={{ marginTop: "0px" }}>
-                <Link
-                  to="/dashBoard"
-                  // onClick={this.toggleMenu}
-                  onClick={this.onLogoutClick.bind(this)}
-                  className="btn btn-light col-md-12"
-                  style={{
-                    marginTop: "10px",
-                    color: "white",
-                    border: "1px solid #343a40",
-                    backgroundColor: "#343a40",
-                    textAlign: "left"
-                  }}
-                >
-                  Logout
-                </Link>
-              </div>
+              {isAuthenticated ? authLinksSideBar : guestLinksSideBar}
             </div>
           )}
         </div>

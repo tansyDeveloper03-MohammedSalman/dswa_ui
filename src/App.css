@@ -57,6 +57,12 @@ img {
   color: #bbb !important;
 }
 /* register */
+.bodyCenterregister {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 50%;
+  text-align: center;
+  margin: 150px 350px;
+}
 .bodyCenter {
   background-color: rgba(0, 0, 0, 0.7);
   height: 90%;

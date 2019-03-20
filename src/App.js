@@ -13,6 +13,7 @@ import Landing from "./components/layouts/landing";
 import Footer from "./components/layouts/footer";
 import Login from "./components/auth/login";
 import Register from "./components/auth/register";
+import RegisterWithEmail from "./components/auth/registerWithEmail";
 import store from "./store";
 import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
@@ -53,6 +54,11 @@ class App extends Component {
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <Route
+              exact
+              path="/registerWithEmail"
+              component={RegisterWithEmail}
+            />
             <Navbar />
 
             <div className="container">
