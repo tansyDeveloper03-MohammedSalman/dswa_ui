@@ -1,7 +1,7 @@
 import axios from "axios";
 import setAuthToken from "../utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 
 // Register user
 export const registeruser = (userData, history) => dispatch => {
@@ -59,7 +59,7 @@ export const loginUser = userData => dispatch => {
 };
 
 export const changePassowrd = (userData, history) => dispatch => {
-  console.log(history);
+  dispatch(clearErrors());
   axios
     .post("/api/dswa/changepassword", userData)
     .then(res => history.push("/dashboard"))
@@ -84,6 +84,13 @@ export const setCurrentUserLogin = (decoded, users) => {
     type: SET_CURRENT_USER,
     payload: decoded,
     userName: users
+  };
+};
+
+// clear errors
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
   };
 };
 

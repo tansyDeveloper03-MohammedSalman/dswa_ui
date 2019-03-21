@@ -75,3 +75,39 @@ img {
   margin-top: 0px;
   color: white;
 }
+
+.bodyRight {
+  float: left;
+  color: white;
+  text-align: center;
+  margin-top: 200px;
+}
+
+.bodyRightDiv {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  float: right;
+}
+
+.bodyRow {
+  margin-top: 150px;
+  padding: 0px;
+}
+
+.btnLinkedWidth {
+  color: #003366;
+  width: 100%;
+}
+
+.btnLinkedColor {
+  background-color: #3078d7;
+  color: white;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.floatright {
+  float: right;
+}

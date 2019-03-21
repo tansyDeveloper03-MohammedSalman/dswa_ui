@@ -122,11 +122,7 @@ class RegisterWithEmail extends Component {
                 </form>
                 <p className="mt-2 text-right">
                   Already have an account? -
-                  <Link
-                    className=""
-                    to="/login"
-                    style={{ float: "right", marginLeft: "5px" }}
-                  >
+                  <Link className="" to="/login" style={{ marginLeft: "5px" }}>
                     Sign In
                   </Link>
                 </p>

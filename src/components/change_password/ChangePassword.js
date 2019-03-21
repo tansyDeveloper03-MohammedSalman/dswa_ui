@@ -43,7 +43,6 @@ class CreateProfile extends Component {
 
   render() {
     const { errors } = this.state;
-    console.log(this.state);
     return (
       <div className="create-profile">
         <div className="container">
@@ -68,6 +67,7 @@ class CreateProfile extends Component {
                   error={errors.password2}
                   info="password must be length 2 to 30 characters"
                 />
+
                 <input
                   type="submit"
                   value="submit"
@@ -88,7 +88,7 @@ CreateProfile.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  profile: state.profile,
+  // profile: state.profile,
   errors: state.errors
 });
 

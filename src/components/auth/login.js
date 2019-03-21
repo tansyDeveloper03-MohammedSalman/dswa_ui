@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
+import "../../App.css";
 
 class Login extends Component {
   constructor() {
@@ -52,41 +53,18 @@ class Login extends Component {
 
     return (
       <div className="landing">
-        <div
-          className="container col-md-9"
-          style={{
-            float: "left",
-            color: "white",
-            textAlign: "center",
-            marginTop: "200px"
-          }}
-        >
+        <div className="container col-md-9 bodyRight">
           <h1 className="display-3 mb-4">Data Science With Ali Courses</h1>
           <p className="lead">
             {" "}
             Courses, share posts and get help from other developers
           </p>
         </div>
-        <div
-          className="login col-md-3"
-          style={{
-            backgroundColor: "rgba(0, 0, 0, 0.7)",
-            height: "100%",
-            float: "right"
-          }}
-        >
+        <div className="login col-md-3 bodyRightDiv">
           <div className="container">
-            <div
-              className="row"
-              style={{
-                marginTop: "150px",
-                padding: "0px"
-              }}
-            >
+            <div className="row bodyRow">
               <div className="col-md-12 m-auto">
-                <p className="lead" style={{ color: "white" }}>
-                  Log In
-                </p>
+                <p className="lead NoPaddingAndMargin">Log In</p>
                 <form action="dashboard.html" onSubmit={this.onSubmit}>
                   <TextFieldGroup
                     placeholder="Email Address"
@@ -110,51 +88,28 @@ class Login extends Component {
                     className="btn btn-info btn-block mt-4"
                   />
                 </form>
-                <div
-                  className="btn-group mt-3"
-                  role="group"
-                  style={{
-                    color: "#003366",
-                    width: "100%"
-                  }}
-                >
-                  <Link
-                    to="/linkedin"
-                    className="btn"
-                    style={{
-                      backgroundColor: "#3078D7",
-                      color: "white"
-                    }}
-                  >
-                    <div style={{ float: "left" }}>
+                <div className="btn-group mt-3 btnLinkedWidth" role="group">
+                  <Link to="/linkedin" className="btn btnLinkedColor">
+                    <div className="floatLeft">
                       <i className="fab fa-linkedin-in mr-1" /> |{" "}
                     </div>
                     Login with LinkedIn
                   </Link>
                 </div>
-                <div
-                  style={{
-                    float: "right",
-                    marginTop: "5px"
-                  }}
-                >
-                  <p style={{ color: "white" }}>
-                    <Link
-                      className="col-md-12"
-                      to="/forgot-password"
-                      style={{ marginLeft: "5px" }}
-                    >
+                <div className="mt-3 floatright">
+                  <p>
+                    <Link className="" to="/forgot-password">
                       Forgot Password
                     </Link>
                   </p>
                 </div>
-                <div style={{ float: "right" }}>
-                  <p style={{ color: "white" }}>
+                <div className="floatright">
+                  <p className="NoPaddingAndMargin">
                     Need an Account?
                     <Link
                       className=""
                       to="/register"
-                      style={{ marginLeft: "5px", marginRight: "15px" }}
+                      style={{ marginLeft: "5px" }}
                     >
                       Register
                     </Link>
