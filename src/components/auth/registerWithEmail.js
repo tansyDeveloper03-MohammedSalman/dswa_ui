@@ -57,7 +57,8 @@ class RegisterWithEmail extends Component {
     this.props.registeruser(newUser, this.props.history);
   }
   render() {
-    const errors = this.state.errors;
+    const { errors } = this.state;
+    console.log(this.state);
     return (
       <div className="landing">
         <div className="register bodyCenter">
@@ -115,6 +116,15 @@ class RegisterWithEmail extends Component {
                     onChange={this.onChange}
                     error={errors.city}
                   />
+                  <div
+                    className="mt-0 text-right"
+                    style={{
+                      color: "red",
+                      fontSize: "13px"
+                    }}
+                  >
+                    {errors.msg}
+                  </div>
                   <input
                     type="submit"
                     className="btn btn-info btn-block mt-2"

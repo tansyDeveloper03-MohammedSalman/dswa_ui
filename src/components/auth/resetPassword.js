@@ -2,17 +2,18 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
+import { resetPassowrd } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 import "../../App.css";
 
-class Login extends Component {
+class ResetPassword extends Component {
   constructor() {
     super();
     this.state = {
-      email: "",
+      _id: "",
       password: "",
-      errors: {}
+      errors: {},
+      user: null
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -22,6 +23,11 @@ class Login extends Component {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push("/dashboard");
     }
+
+    const { id } = this.props.match.params;
+    fetch(`http://localhost:3000/user/${id}/resetPassword/`).then(user => {
+      this.setState(() => ({ user }));
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,11 +48,12 @@ class Login extends Component {
     e.preventDefault();
 
     const userData = {
-      email: this.state.email,
-      password: this.state.password
+      id: this.props.match.params.id,
+      password: this.state.password,
+      password2: this.state.password2
     };
 
-    this.props.loginUser(userData);
+    this.props.resetPassowrd(userData);
   }
   render() {
     const errors = this.state.errors;
@@ -64,46 +71,41 @@ class Login extends Component {
           <div className="container">
             <div className="row bodyRow">
               <div className="col-md-12 m-auto">
-                <p className="lead NoPaddingAndMargin">Log In</p>
+                <p className="lead NoPaddingAndMargin">Reset Password</p>
                 <form action="dashboard.html" onSubmit={this.onSubmit}>
                   <TextFieldGroup
-                    placeholder="Email Address"
-                    name="email"
-                    type="email"
-                    value={this.state.email}
-                    onChange={this.onChange}
-                    error={errors.email}
-                  />
-                  <TextFieldGroup
-                    placeholder="password"
+                    placeholder="New Password"
                     name="password"
                     type="password"
                     value={this.state.password}
                     onChange={this.onChange}
                     error={errors.password}
                   />
+                  <TextFieldGroup
+                    placeholder="Confirm Password"
+                    name="password2"
+                    type="password"
+                    value={this.state.password2}
+                    onChange={this.onChange}
+                    error={errors.password2}
+                  />
+                  <div
+                    className="mt-0 text-right"
+                    style={{
+                      color: "red",
+                      fontSize: "13px"
+                    }}
+                  >
+                    {errors.msg}
+                  </div>
                   <input
                     type="submit"
-                    value="Login"
+                    value="Reset Password"
                     className="btn btn-info btn-block mt-4"
                   />
                 </form>
-                <div className="btn-group mt-3 btnLinkedWidth" role="group">
-                  <Link to="/linkedin" className="btn btnLinkedColor">
-                    <div className="floatLeft">
-                      <i className="fab fa-linkedin-in mr-1" /> |{" "}
-                    </div>
-                    Login with LinkedIn
-                  </Link>
-                </div>
-                <div className="mt-3 floatright">
-                  <p>
-                    <Link className="" to="/forgotpassword">
-                      Forgot Password
-                    </Link>
-                  </p>
-                </div>
-                <div className="floatright">
+
+                <div className="floatright mt-3">
                   <p className="NoPaddingAndMargin">
                     Need an Account?
                     <Link
@@ -111,7 +113,7 @@ class Login extends Component {
                       to="/register"
                       style={{ marginLeft: "5px" }}
                     >
-                      Register
+                      Sign Up
                     </Link>
                   </p>
                 </div>
@@ -124,8 +126,8 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+ResetPassword.propTypes = {
+  resetPassowrd: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -137,5 +139,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
-)(Login);
+  { resetPassowrd }
+)(ResetPassword);

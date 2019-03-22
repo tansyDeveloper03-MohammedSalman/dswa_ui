@@ -5,6 +5,7 @@ import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 
 // Register user
 export const registeruser = (userData, history) => dispatch => {
+  dispatch(clearErrors());
   axios
     .post("/api/dswa/signup", userData)
     .then(res => {
@@ -63,6 +64,33 @@ export const changePassowrd = (userData, history) => dispatch => {
   axios
     .post("/api/dswa/changepassword", userData)
     .then(res => history.push("/dashboard"))
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+export const forgotPassowrd = (userData, history) => dispatch => {
+  dispatch(clearErrors());
+  axios
+    .post("/api/dswa/forgotpassword", userData)
+    .then(res => history.push())
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+export const resetPassowrd = (userData, history) => dispatch => {
+  dispatch(clearErrors());
+
+  axios
+    .post("/api/dswa/resetPassword", userData)
+    .then(res => history.push())
     .catch(err =>
       dispatch({
         type: GET_ERRORS,

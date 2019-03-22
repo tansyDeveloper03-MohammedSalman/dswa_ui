@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { loginUser } from "../../actions/authActions";
+import { forgotPassowrd } from "../../actions/authActions";
 import TextFieldGroup from "../common/TextFieldGroup";
 import "../../App.css";
 
-class Login extends Component {
+class ForgotPassword extends Component {
   constructor() {
     super();
     this.state = {
@@ -46,11 +46,11 @@ class Login extends Component {
       password: this.state.password
     };
 
-    this.props.loginUser(userData);
+    this.props.forgotPassowrd(userData, this.props.history);
   }
   render() {
     const errors = this.state.errors;
-
+    console.log(this.state);
     return (
       <div className="landing">
         <div className="container col-md-9 bodyRight">
@@ -64,8 +64,8 @@ class Login extends Component {
           <div className="container">
             <div className="row bodyRow">
               <div className="col-md-12 m-auto">
-                <p className="lead NoPaddingAndMargin">Log In</p>
-                <form action="dashboard.html" onSubmit={this.onSubmit}>
+                <p className="lead NoPaddingAndMargin">Forgor Password</p>
+                <form onSubmit={this.onSubmit}>
                   <TextFieldGroup
                     placeholder="Email Address"
                     name="email"
@@ -74,44 +74,36 @@ class Login extends Component {
                     onChange={this.onChange}
                     error={errors.email}
                   />
-                  <TextFieldGroup
-                    placeholder="password"
-                    name="password"
-                    type="password"
-                    value={this.state.password}
-                    onChange={this.onChange}
-                    error={errors.password}
-                  />
+
+                  <div
+                    className="mt-0 text-right"
+                    style={{
+                      color: "red",
+                      fontSize: "13px"
+                    }}
+                  >
+                    {errors.msg}
+                  </div>
+
                   <input
                     type="submit"
-                    value="Login"
+                    value="Recover Password"
                     className="btn btn-info btn-block mt-4"
                   />
                 </form>
-                <div className="btn-group mt-3 btnLinkedWidth" role="group">
-                  <Link to="/linkedin" className="btn btnLinkedColor">
-                    <div className="floatLeft">
-                      <i className="fab fa-linkedin-in mr-1" /> |{" "}
-                    </div>
-                    Login with LinkedIn
-                  </Link>
-                </div>
-                <div className="mt-3 floatright">
-                  <p>
-                    <Link className="" to="/forgotpassword">
-                      Forgot Password
-                    </Link>
-                  </p>
-                </div>
-                <div className="floatright">
-                  <p className="NoPaddingAndMargin">
+
+                <div className="floatright mt-3">
+                  <p
+                    className="NoPaddingAndMargin"
+                    style={{ fontSize: "13px" }}
+                  >
                     Need an Account?
                     <Link
                       className=""
                       to="/register"
                       style={{ marginLeft: "5px" }}
                     >
-                      Register
+                      Register Here
                     </Link>
                   </p>
                 </div>
@@ -124,8 +116,8 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+ForgotPassword.propTypes = {
+  forgotPassowrd: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -137,5 +129,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { loginUser }
-)(Login);
+  { forgotPassowrd }
+)(ForgotPassword);
