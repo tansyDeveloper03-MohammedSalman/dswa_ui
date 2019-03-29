@@ -10,6 +10,7 @@ class Navbar extends Component {
     e.preventDefault();
     this.props.clearCurrentProfile();
     this.props.logoutUser();
+    this.setState({ visible: false });
   }
   constructor(props) {
     super(props);
@@ -32,6 +33,7 @@ class Navbar extends Component {
     }
     this.setState({ visible: false });
   }
+
   render() {
     const { isAuthenticated } = this.props.auth;
 

@@ -34,6 +34,7 @@ export const registeruser = (userData, history) => dispatch => {
 };
 
 export const loginUser = userData => dispatch => {
+  dispatch(clearErrors());
   axios
     .post("/api/dswa/login", userData)
     .then(res => {

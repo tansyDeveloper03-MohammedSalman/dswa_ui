@@ -49,7 +49,7 @@ class Login extends Component {
     this.props.loginUser(userData);
   }
   render() {
-    const errors = this.state.errors;
+    const { errors } = this.state;
 
     return (
       <div className="landing">
