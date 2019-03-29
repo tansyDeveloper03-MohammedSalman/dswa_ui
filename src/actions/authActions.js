@@ -6,6 +6,7 @@ import { GET_ERRORS, SET_CURRENT_USER, CLEAR_ERRORS } from "./types";
 // Register user
 export const registeruser = (userData, history) => dispatch => {
   dispatch(clearErrors());
+
   axios
     .post("/api/dswa/signup", userData)
     .then(res => {
