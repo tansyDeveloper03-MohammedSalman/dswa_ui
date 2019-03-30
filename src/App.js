@@ -20,6 +20,7 @@ import store from "./store";
 import Dashboard from "./components/dashboard/Dashboard";
 import { clearCurrentProfile } from "./actions/profileActions";
 import EditProfile from "./components/edit-profile/EditProfile";
+import MyCourses from "./components/courses/MyCourses";
 import ChangePassword from "./components/change_password/ChangePassword";
 
 import "./App.css";
@@ -88,7 +89,7 @@ class App extends Component {
                 />
               </Switch>
               <Switch>
-                <PrivateRoute exact path="/Courses" component={EditProfile} />
+                <PrivateRoute exact path="/Courses" component={MyCourses} />
               </Switch>
               <Switch>
                 <PrivateRoute

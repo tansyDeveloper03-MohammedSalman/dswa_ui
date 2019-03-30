@@ -48,8 +48,12 @@ class CreateProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
-              <h1 className="display-4 text-center">Change Password</h1>
-              <small className="d-block pb-3">* = required fields</small>
+              <h1 className="display-4 text-center text-white">
+                Change Password
+              </h1>
+              <small className="d-block pb-3 text-white">
+                * = required fields
+              </small>
               <form onSubmit={this.onSubmit}>
                 <TextFieldGroup
                   placeholder="* Password"

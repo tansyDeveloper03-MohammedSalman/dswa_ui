@@ -67,7 +67,7 @@ class Navbar extends Component {
     );
 
     const authLinksSideBar = (
-      <div style={{ marginTop: "0px" }}>
+      <div style={{ marginTop: "0px", backgroundColor: "#32325d" }}>
         <Link
           to="/dashBoard"
           // onClick={this.toggleMenu}
@@ -76,8 +76,8 @@ class Navbar extends Component {
           style={{
             marginTop: "10px",
             color: "white",
-            border: "1px solid #343a40",
-            backgroundColor: "#343a40",
+            border: "1px solid #32325d",
+            backgroundColor: "#32325d",
             textAlign: "left"
           }}
         >
@@ -122,14 +122,20 @@ class Navbar extends Component {
     );
     return (
       <div>
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-0">
+        <nav
+          className="navbar navbar-expand-sm navbar-dark  mb-0"
+          style={{ backgroundColor: "#32325d" }}
+        >
           <button
-            className="bg-dark"
+            className=""
             onClick={this.toggleMenu}
             type="button"
-            style={{ border: "1px solid #343a40" }}
+            style={{ border: "1px solid #343a40", backgroundColor: "#32325d" }}
           >
-            <span className="navbar-toggler-icon " style={{}} />
+            <span
+              className="navbar-toggler-icon navbar-dark"
+              style={{ color: "white" }}
+            />
           </button>
 
           <div className="container">
@@ -151,7 +157,7 @@ class Navbar extends Component {
                 <li className="nav-item">
                   <Link className="nav-link" to="/Courses">
                     {" "}
-                    Browse Courses
+                    My Courses
                   </Link>
                 </li>
                 <li className="nav-item">
@@ -174,9 +180,9 @@ class Navbar extends Component {
         <div>
           {this.state.visible && (
             <div
-              className="bg-dark"
+              className=""
               style={{
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                backgroundColor: "#32325d",
                 position: "absolute",
                 overflow: "hidden",
                 height: "100%",
@@ -190,10 +196,16 @@ class Navbar extends Component {
               onBlur={this.hide}
             >
               <button
-                className="navbar-toggler navbar-dark "
+                className="navbar-toggler"
                 onClick={this.toggleMenu}
                 type="button"
-                style={{ padding: "0px", margin: "15px", marginLeft: "22px" }}
+                style={{
+                  padding: "0px",
+                  margin: "15px",
+                  marginLeft: "22px",
+                  border: "1px solid #32325d",
+                  backgroundColor: "#32325d"
+                }}
               >
                 <span
                   className="navbar-toggler-icon "
@@ -203,7 +215,10 @@ class Navbar extends Component {
                 />
               </button>
 
-              <div className="bg-dark" style={{ marginTop: "0px" }}>
+              <div
+                className=""
+                style={{ marginTop: "0px", backgroundColor: "#32325d" }}
+              >
                 <Link
                   to="/change-password"
                   onClick={this.toggleMenu}
@@ -211,15 +226,15 @@ class Navbar extends Component {
                   style={{
                     marginTop: "10px",
                     color: "white",
-                    border: "1px solid #343a40",
-                    backgroundColor: "#343a40",
+                    border: "1px solid #32325d",
+                    backgroundColor: "#32325d",
                     textAlign: "left"
                   }}
                 >
                   Change Password
                 </Link>
               </div>
-              <div style={{ marginTop: "0px" }}>
+              <div style={{ marginTop: "0px", backgroundColor: "#32325d" }}>
                 <Link
                   to="/dashBoard"
                   onClick={this.toggleMenu}
@@ -227,8 +242,8 @@ class Navbar extends Component {
                   style={{
                     marginTop: "10px",
                     color: "white",
-                    border: "1px solid #343a40",
-                    backgroundColor: "#343a40",
+                    border: "1px solid #32325d",
+                    backgroundColor: "#32325d",
                     textAlign: "left"
                   }}
                 >
