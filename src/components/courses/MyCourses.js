@@ -8,6 +8,11 @@ import InputGroup from "../common/inputGroup";
 import { createProfile, getCurrentProfie } from "../../actions/profileActions";
 import isEmpty from "../../validation/is-empty";
 import logo from "../../img/showcase.jpg";
+import logo1 from "../../img/showcase1.jpg";
+import logo2 from "../../img/showcase2.jpg";
+import logo3 from "../../img/showcase3.jpg";
+import logo4 from "../../img/showcase4.jpg";
+import logo5 from "../../img/showcase5.jpg";
 import "../../../node_modules/slick-carousel/slick/slick.css";
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
@@ -18,7 +23,7 @@ function SampleNextArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, display: "block" }}
+      style={{ ...style, display: "block", color: "red" }}
       onClick={onClick}
     />
   );
@@ -47,6 +52,7 @@ class MyCourses extends React.Component {
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
+      adaptiveHeight: true,
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />
     };
@@ -62,49 +68,55 @@ class MyCourses extends React.Component {
             </div>
           </div>
         </div>
-        <hr style={{ backgroundColor: "white" }} />
+        <hr style={{ backgroundColor: "#212148" }} />
         <Slider {...settings}>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo1} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo2} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo3} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo4} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo5} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
           <div className="col-md-12">
             <a href="">
-              <img src={logo} alt="Logo" />
+              <img src={logo} alt="Logo" style={{ height: "150px" }} />
             </a>
           </div>
         </Slider>
+        <div>
+          <section className="container">
+            <h1>Robots</h1>
+            <div className="row" />
+          </section>
+        </div>
       </div>
     );
   }

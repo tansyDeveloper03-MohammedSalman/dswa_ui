@@ -62,6 +62,7 @@ class Login extends Component {
         </div>
         <div className="login col-md-3 bodyRightDiv">
           <div className="container">
+            <div className="col-md-12 text-white ">DSWA</div>
             <div className="row bodyRow">
               <div className="col-md-12 m-auto">
                 <p className="lead NoPaddingAndMargin">Log In</p>

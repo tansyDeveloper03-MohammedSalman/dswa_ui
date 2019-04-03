@@ -53,7 +53,7 @@ class App extends Component {
         <Router>
           <div className="App">
             {/* <Navbar /> */}
-
+            <Navbar />
             <Route exact path="/" component={Landing} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
@@ -68,7 +68,6 @@ class App extends Component {
               path="/registerWithEmail"
               component={RegisterWithEmail}
             />
-            <Navbar />
 
             <div className="container">
               <Switch>
